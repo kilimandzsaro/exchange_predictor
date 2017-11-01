@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem "bootstrap-sass", "3.3.7"
 gem "coffee-rails", "~> 4.2"
+gem "devise"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails", "4.3.1"
 gem "pg", "0.20.0"
