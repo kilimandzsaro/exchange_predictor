@@ -1,13 +1,8 @@
-guard :shell do
-  watch ("app/*") { | m | `tail #{m[0]}` }
-end
-
 guard :bundler do
   watch("Gemfile")
 end
 
-guard :rspec, version: 2, cli: "--color --drb -r rspec/instafail -f RSpec::Instafail", bundler: false, all_after_pass: false, all_on_start: false, keep_failed: false do
-  
+guard :rspec, all_after_pass: false, all_on_start: false do
   watch("spec/spec_helper.rb") { "spec" }
   watch("app/controllers/application_controller.rb") { "spec/controllers" }
   watch("config/routes.rb") { "spec/routing" }
