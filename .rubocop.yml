@@ -2,8 +2,8 @@
 
 inherit_from: .rubocop_todo.yml
 require:
-  - rubocop/cop/internal_affairs
   - rubocop-rspec
+  - rubocop/cop/internal_affairs
 
 AllCops:
   Exclude:
@@ -11,6 +11,9 @@ AllCops:
     - "spec/fixtures/**/*"
     - "tmp/**/*"
   TargetRubyVersion: 2.4
+  RSpec:
+    Patterns:
+      - '_test.rb$'
 
 Naming/PredicateName:
   # Method define macros for dynamically generated method.

@@ -1,8 +1,12 @@
+guard :shell do
+  watch(/app%r*/) { |m| `tail #{m[0]}` }
+end
+
 guard :bundler do
   watch("Gemfile")
 end
 
-guard :rspec, all_after_pass: false, all_on_start: false do
+guard :rspec, all_after_pass: false, all_on_start: false, cmd: "bundle exec rspec" do
   watch("spec/spec_helper.rb") { "spec" }
   watch("app/controllers/application_controller.rb") { "spec/controllers" }
   watch("config/routes.rb") { "spec/routing" }
