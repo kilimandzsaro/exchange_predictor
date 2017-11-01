@@ -1,9 +1,9 @@
 default: &default
-  adapter: <%= ENV['DB_ADAPTER'] ||= 'postgresql' %>
-  host: <%= ENV['LENDIFY_DBHOST'] || 'localhost' %>
+  adapter: <%= ENV["DB_ADAPTER"] ||= "postgresql" %>
+  host: <%= ENV["LENDIFY_DBHOST"] || "localhost" %>
   port: 5432
   encoding: utf8
-  database: <%= ENV['LENDIFY_DBNAME'] || 'predictor' %>
+  database: <%= ENV["LENDIFY_DBNAME"] || "predictor" %>
   pool: 20
   username: predictor
   password: predictor
