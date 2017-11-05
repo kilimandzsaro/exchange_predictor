@@ -24,6 +24,7 @@ group :development do
   gem "guard"
   gem "guard-bundler"
   gem "guard-rspec"
+  gem "guard-rubocop"
   gem "guard-shell"
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "spring"

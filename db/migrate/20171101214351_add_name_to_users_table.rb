@@ -1,3 +1,4 @@
+# Add the missing name into the users table
 class AddNameToUsersTable < ActiveRecord::Migration[5.1]
   def self.up
     add_column :users, :name, :string, null: false, default: ""

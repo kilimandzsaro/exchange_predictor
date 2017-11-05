@@ -10,6 +10,7 @@ AllCops:
     - "vendor/**/*"
     - "spec/fixtures/**/*"
     - "tmp/**/*"
+    - "config/initializers/devise.rb"
   TargetRubyVersion: 2.4
   RSpec:
     Patterns:
@@ -22,6 +23,10 @@ Naming/PredicateName:
     - define_singleton_method
     - def_node_matcher
     - def_node_search
+
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 20
 
 Style/FrozenStringLiteralComment:
   EnforcedStyle: always
