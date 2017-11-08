@@ -1,7 +1,12 @@
-<h2>Change your password</h2>
+<% provide(:title) %>
+<div class="center jumbotron">
+  <h1>
+    <h2>Edit password</h2>
+  </h1>
+</div>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= render "shared/error_messages" %>
   <%= f.hidden_field :reset_password_token %>
 
   <div class="field">
