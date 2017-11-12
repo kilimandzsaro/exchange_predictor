@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :exchange_settings, except: :show
   devise_for :users, path: "users", path_names: {
     sign_in: "login",
     sign_out: "logout",
@@ -17,5 +18,8 @@ Rails.application.routes.draw do
   end
   resources :users, except: :index
 
+  authenticated :user do
+    root to: "exchange_settings#index", as: :authenticated_root
+  end
   root to: "users#new"
 end

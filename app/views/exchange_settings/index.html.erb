@@ -1,0 +1,36 @@
+<% provide(:title) %>
+
+<div class="center jumbotron">
+  <h1>
+    Your exchange settings
+  </h1>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <td>From currency</td>
+        <td>To currency</td>
+        <td>Exchange amount</td>
+        <td>Created date</td>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exchange_settings.each do |exchange_setting| %>
+      <tr>
+        <td><%= SupportedCurrency.find(exchange_setting.base_currency_id).currency_code %></td>
+        <td><%= SupportedCurrency.find(exchange_setting.target_currency_id).currency_code %></td>
+        <td><%= exchange_setting.amount %></td>
+        <td><%= exchange_setting.created_at %></td>
+      </tr>
+      <tr>
+        <td><%= link_to "Edit", edit_exchange_setting_path(exchange_setting) %></td>
+        <td><%= link_to "Destroy", exchange_setting, method: :delete, data: { confirm: "Are you sure?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Setup a new prediction", new_exchange_setting_path %>
