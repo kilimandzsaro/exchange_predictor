@@ -1,5 +1,4 @@
 require "rails_helper"
-require "pry"
 
 RSpec.describe "SiteLayouts", type: :request do
   before :all do
@@ -22,6 +21,10 @@ RSpec.describe "SiteLayouts", type: :request do
     end
     it "gets the root page" do
       get root_path
+      expect(response).to have_http_status(200)
+    end
+    it "get the calculator settings page" do
+      get calculator_settings_path
       expect(response).to have_http_status(200)
     end
   end
