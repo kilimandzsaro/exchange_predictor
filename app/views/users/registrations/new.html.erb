@@ -1,0 +1,11 @@
+<% provide(:title) %>
+<div class="center jumbotron">
+  <h1>
+    Sign Up
+  </h1>
+</div>
+<div class="center jumbotron">
+If you don't have a user, please sign up first. If you have than please <%= link_to "login", new_user_session_path %>
+</div>
+
+<%= render "shared/form_signup", user: @user %>
