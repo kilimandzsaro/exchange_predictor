@@ -17,6 +17,7 @@ gem "uglifier", ">= 1.3.0"
 group :development, :test do
   gem "byebug"
   gem "factory_bot_rails", "~> 4.0"
+  gem "guard-rspec"
   gem "rails-controller-testing"
   gem "rspec-rails", "~> 3.6"
 end
@@ -24,10 +25,10 @@ end
 group :development do
   gem "guard"
   gem "guard-bundler"
-  gem "guard-rspec"
   gem "guard-rubocop"
   gem "guard-shell"
   gem "listen", ">= 3.0.5", "< 3.2"
+  gem "pry"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console", ">= 3.3.0"
