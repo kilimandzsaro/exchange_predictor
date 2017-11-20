@@ -1,9 +1,10 @@
 require "rails_helper"
 
 RSpec.describe ExchangeSetting, type: :model do
-  before(:all) do
-    @exchange_setting = create(:exchange_setting)
+  setup do
+    @exchange_setting = FactoryBot.create(:exchange_setting)
   end
+
   it "is filled with valid period" do
     expect(ExchangeSetting.new(@exchange_setting)).to be_valid
   end

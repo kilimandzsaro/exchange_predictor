@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:create, :new]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :login]
 
   # GET /users/1
   # GET /users/1.json
@@ -14,6 +14,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  def login
   end
 
   # POST /users
@@ -40,7 +43,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_user_path }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

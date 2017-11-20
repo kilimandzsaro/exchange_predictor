@@ -4,7 +4,7 @@ RSpec.describe ExchangeSettingsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # ExchangeSetting. As you add validations to ExchangeSetting, be sure to
   # adjust the attributes here as well.
-  before(:each) do
+  setup do
     @valid_attributes = create(:exchange_setting)
     @invalid_attributes = create(:not_exchange_setting)
     @valid_session = create(:exchange_setting)

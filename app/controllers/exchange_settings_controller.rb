@@ -1,12 +1,13 @@
 # A logged in user can setup a new prediction settings
 class ExchangeSettingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user, only: [:edit, :index, :update, :destroy]
   before_action :set_exchange_setting, only: [:edit, :update, :destroy]
 
   # GET /exchange_settings
   # GET /exchange_settings.json
   def index
-    @exchange_settings = ExchangeSetting.where(user_id: current_user.id)
+    @exchange_settings = ExchangeSetting.where(user_id: current_user.id).order("id DESC")
   end
 
   # GET /exchange_settings/new
@@ -15,36 +16,31 @@ class ExchangeSettingsController < ApplicationController
   end
 
   # GET /exchange_settings/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /exchange_settings
   # POST /exchange_settings.json
   def create
     @exchange_setting = ExchangeSetting.new(exchange_setting_params)
-
-    respond_to do |format|
-      if @exchange_setting.save
-        format.html { redirect_to @exchange_setting, notice: "The setting was successfully created." }
-        format.json { render :index, status: :created, location: @exchange_setting }
-      else
-        format.html { render :new }
-        format.json { render json: @exchange_setting.errors, status: :unprocessable_entity }
-      end
+    if @exchange_setting.save
+      flash[:success] = "The setting was successfully created."
+      redirect_to exchange_settings_url
+    else
+      flash[:error] = "Please add correct values."
+      redirect_to new_exchange_setting_url
     end
   end
 
   # PATCH/PUT /exchange_settings/1
   # PATCH/PUT /exchange_settings/1.json
   def update
-    respond_to do |format|
-      if @exchange_setting.update(exchange_setting_params)
-        format.html { redirect_to @exchange_setting, notice: "The setting was successfully updated." }
-        format.json { render :index, status: :ok, location: @exchange_setting }
-      else
-        format.html { render :edit }
-        format.json { render json: @exchange_setting.errors, status: :unprocessable_entity }
-      end
+    if @exchange_setting.update(exchange_setting_params)
+      flash[:success] = "The setting was successfully updated."
+      redirect_to exchange_settings_url
+    else
+      flash[:error] = "Please add correct values."
+      redirect_to edit_exchange_setting_url(current_user.id)
     end
   end
 
@@ -52,13 +48,15 @@ class ExchangeSettingsController < ApplicationController
   # DELETE /exchange_settings/1.json
   def destroy
     @exchange_setting.destroy
-    respond_to do |format|
-      format.html { redirect_to exchange_settings_url, notice: "The setting was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    flash[:success] = "The setting was successfully destroyed."
+    redirect_to exchange_settings_url
   end
 
   private
+
+  def set_user
+    @user = current_user
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_exchange_setting
