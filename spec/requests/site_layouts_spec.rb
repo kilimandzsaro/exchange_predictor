@@ -1,8 +1,7 @@
 require "rails_helper"
-require "pry"
 
 RSpec.describe "SiteLayouts", type: :request do
-  before :all do
+  setup do
     @user = create(:user)
   end
   describe "GET /site_layouts" do
@@ -23,6 +22,10 @@ RSpec.describe "SiteLayouts", type: :request do
     it "gets the root page" do
       get root_path
       expect(response).to have_http_status(200)
+    end
+    it "get the exchange settings page" do
+      get exchange_settings_path
+      expect(response).to have_http_status(302)
     end
   end
 end

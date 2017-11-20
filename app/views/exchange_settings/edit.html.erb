@@ -1,0 +1,13 @@
+<% provide(:title) %>
+
+<div class="center jumbotron">
+  <h2>
+    Editing Exchange Setting
+  </h2>
+</div>
+
+<%= render "shared/form_exchange_settings", exchange_setting: @exchange_setting %>
+<%= render "shared/error_messages" %>
+
+<%= link_to "Show", @exchange_setting %> |
+<%= link_to "Back", exchange_settings_path %>

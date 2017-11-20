@@ -1,16 +1,24 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "Exchange Predictor", '#', id: "logo" %>
+  <% if current_user %>
     <nav>
+      <ul class="nav navbar-nav navbar-header navbar-brand">
+        Wellcome <%= current_user.name %> to Exchange Predictor
+      </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   '#' %></li>
-        <li><%= link_to "Help",   '#' %></li>
-        <% if user_signed_in? %>
-          <li><%= link_to "Log out", logout_path %></li>
-        <% else %>
-          <li><%= link_to "Log in", login_path %></li>
-        <% end %>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "User Settings", edit_user_path(current_user.id) %></li>
+        <li><%= link_to "Log out", logout_path %></li>
       </ul>
     </nav>
-  </div>
+  <% else %>
+    <nav>
+      <ul class="nav navbar-nav navbar-header navbar-brand">
+        Wellcome to Exchange Predictor
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Log in", login_path %></li>
+      </ul>
+    </nav>
+  <% end %>
 </header>

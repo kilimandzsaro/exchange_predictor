@@ -1,0 +1,11 @@
+one:
+  amount: 2000
+  period: 12
+
+two:
+  amount: 1000
+  period: 10
+
+three:
+  amount: 999999999
+  period: 50

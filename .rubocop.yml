@@ -11,6 +11,7 @@ AllCops:
     - "spec/fixtures/**/*"
     - "tmp/**/*"
     - "config/initializers/devise.rb"
+    - "db/schema.rb"
   TargetRubyVersion: 2.4
   RSpec:
     Patterns:

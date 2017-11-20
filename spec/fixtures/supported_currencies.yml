@@ -1,0 +1,8 @@
+eur:
+  currency_code: EUR
+
+pln:
+  currency_code: PLN
+
+hun:
+  currency_code: HUN

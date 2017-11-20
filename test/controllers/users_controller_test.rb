@@ -24,25 +24,25 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show user" do
-    sign_in @user
+    login_as @user
     get user_url(@user)
     assert_response :success
   end
 
   test "should get edit" do
-    sign_in @user
+    login_as @user
     get edit_user_url(@user)
     assert_response :success
   end
 
   test "should update user" do
-    sign_in @user
+    login_as @user
     patch user_url(@user), params: { user: { name: @user.name } }
     assert_redirected_to user_url(@user)
   end
 
   test "should destroy user" do
-    sign_in @user
+    login_as @user
     assert_difference("User.count", -1) do
       delete user_url(@user)
     end

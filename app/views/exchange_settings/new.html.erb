@@ -1,0 +1,14 @@
+<% provide(:title) %>
+
+<div class="center jumbotron">
+  <h2>
+    Prediction settings
+  </h2>
+</div>
+
+<h4>Setup your preferencies for prediction</h4>
+
+<%= render "shared/form_exchange_settings", user: current_user %>
+<%= render "shared/error_messages" %>
+
+<%= link_to "Back", exchange_settings_path %>
